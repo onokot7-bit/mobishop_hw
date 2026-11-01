@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header"><h1>Каталог телефонов</h1></div>
+    <div class="sort-block">
+        <span>Сортировать по:</span>
+        <a href="?sort=name">названию</a>
+        <a href="?sort=min_price">начиная с дешёвых</a>
+        <a href="?sort=max_price">начиная с дорогих</a>
+    </div>
+    <div class="content">
+        {% for phone in phones %}
+        <div class="phone">
+            <a href="{% url 'phone' phone.slug %}"><h3>{{ phone.name }}</h3></a>
+            <div class="price">Стоимость: {{ phone.price }} ₽</div>
+            <img src="{{ phone.image }}" alt="{{ phone.name }}">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

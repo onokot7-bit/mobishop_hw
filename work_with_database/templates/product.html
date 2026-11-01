@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ phone.name }}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header">
+        <a href="{% url 'catalog' %}">Вернуться в каталог</a>
+        <h1>{{ phone.name }}</h1>
+    </div>
+    <div class="phone">
+        <img src="{{ phone.image }}" alt="{{ phone.name }}">
+        <div class="price">Стоимость: {{ phone.price }} ₽</div>
+        <p>Дата выпуска: {{ phone.release_date }}</p>
+        <p>LTE: {{ phone.lte_exists|yesno:'есть,нет' }}</p>
+    </div>
+</div>
+{% endblock %}
